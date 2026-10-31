@@ -28,6 +28,7 @@ void Game::Reset()
 	brick.doubleThick = true;
 	brick.color = ConsoleColor::DarkGreen;
 	const int gap = 2;
+	bricks.clear();
 	for (int i = 0; i < 5; ++i)
 	{
 		brick.x_position = i * (brick.width + gap);
@@ -128,4 +129,6 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
+	if (ball.y_position >= Console::WindowHeight() - 1)
+		ball.moving = false;
 }
